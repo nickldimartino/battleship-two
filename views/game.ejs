@@ -1,0 +1,503 @@
+<%- include("./partials/header") %>
+
+<div id="rules">
+    <strong>GAME RULES:</strong><BR>
+    <strong>GOAL: </strong>Be the first to sink all five of your opponent's ships.<br>
+    <strong>GAMEPLAY: </strong>Choose to play against the computer or a two player game. Take turns alternating guesses to hit each other's ships. 
+    The first peson to sink all of their opponent's ships wins. Player 1 goes first. 
+    <i>Shrink window for board labels to be over their respective boards</i><br>
+    <strong>LEGEND:</strong><br>
+    -Red squares designate hits.<br>
+    -White squares designate misses.<br>
+    -Grey squares designate your ships.<br>
+    -Lightgrey squares designate unsaved boat position.
+</div>
+<div id="boat-placement-instructions">
+    <strong>BOAT PLACEMENT INSTRUCTIONS:</strong><BR>
+    <strong>GOAL: </strong>Place all five boats on your game board.<br>
+    <strong>HOW TO: </strong>Boats must be placed horiozontally or vertically and they can't be changed once the game has started. Pick a ship and place that
+    number of squares in a row. Then, click any one of that ships' squares to lock it. Repeat for each ship.<br>
+    <strong>LEGEND:</strong><br>
+    -Aircraft Carrier: 5 squares<br>
+    -Battleship: 4 squares<br>
+    -Destroyer: 3 squares<br>
+    -Submarine: 3 squares<br>
+    -Patrol Boat: 2 squares<br>
+</div>
+<body>
+    <section id="upper-hud">   
+        <header>BATTLESHIP</header>
+        <div id="game-info">
+            <div id="p1-hit-count" class="hit-count"></div>
+            <div id="game-log"></div>
+            <div id="p2-hit-count" class="hit-count"></div>
+        </div>
+    </section>
+    <div></div>       
+    <section id="board-labels">
+        <div class="board-label">Player 1 - Fleet</div>
+        <div class="board-label">Player 1 - Guesses</div>
+        <div class="board-label">Player 2 - Guesses</div>
+        <div class="board-label">Player 2 - Fleet</div>
+    </section>
+    <section id="boards">
+        <section id="player1-boat-board" class="board p1boards">  
+            <div id="p1b-a1" class="grid-coord">A1</div>
+            <div id="p1b-a2" class="grid-coord">2</div>
+            <div id="p1b-a3" class="grid-coord">3</div>
+            <div id="p1b-a4" class="grid-coord">4</div>
+            <div id="p1b-a5" class="grid-coord">5</div>
+            <div id="p1b-a6" class="grid-coord">6</div>
+            <div id="p1b-a7" class="grid-coord">7</div>
+            <div id="p1b-a8" class="grid-coord">8</div>
+            <div id="p1b-a9" class="grid-coord">9</div>
+            <div id="p1b-a10" class="grid-coord">10</div>
+    
+            <div id="p1b-b1" class="grid-coord">B</div>
+            <div id="p1b-b2"></div>
+            <div id="p1b-b3"></div>
+            <div id="p1b-b4"></div>
+            <div id="p1b-b5"></div>
+            <div id="p1b-b6"></div>
+            <div id="p1b-b7"></div>
+            <div id="p1b-b8"></div>
+            <div id="p1b-b9"></div>
+            <div id="p1b-b10"></div>
+            
+            <div id="p1b-c1" class="grid-coord">C</div>
+            <div id="p1b-c2"></div>
+            <div id="p1b-c3"></div>
+            <div id="p1b-c4"></div>
+            <div id="p1b-c5"></div>
+            <div id="p1b-c6"></div>
+            <div id="p1b-c7"></div>
+            <div id="p1b-c8"></div>
+            <div id="p1b-c9"></div>
+            <div id="p1b-c10"></div>
+    
+            <div id="p1b-d1" class="grid-coord">D</div>
+            <div id="p1b-d2"></div>
+            <div id="p1b-d3"></div>
+            <div id="p1b-d4"></div>
+            <div id="p1b-d5"></div>
+            <div id="p1b-d6"></div>
+            <div id="p1b-d7"></div>
+            <div id="p1b-d8"></div>
+            <div id="p1b-d9"></div>
+            <div id="p1b-d10"></div>
+    
+            <div id="p1b-e1" class="grid-coord">E</div>
+            <div id="p1b-e2"></div>
+            <div id="p1b-e3"></div>
+            <div id="p1b-e4"></div>
+            <div id="p1b-e5"></div>
+            <div id="p1b-e6"></div>
+            <div id="p1b-e7"></div>
+            <div id="p1b-e8"></div>
+            <div id="p1b-e9"></div>
+            <div id="p1b-e10"></div>
+    
+            <div id="p1b-f1" class="grid-coord">F</div>
+            <div id="p1b-f2"></div>
+            <div id="p1b-f3"></div>
+            <div id="p1b-f4"></div>
+            <div id="p1b-f5"></div>
+            <div id="p1b-f6"></div>
+            <div id="p1b-f7"></div>
+            <div id="p1b-f8"></div>
+            <div id="p1b-f9"></div>
+            <div id="p1b-f10"></div>
+    
+            <div id="p1b-g1" class="grid-coord">G</div>
+            <div id="p1b-g2"></div>
+            <div id="p1b-g3"></div>
+            <div id="p1b-g4"></div>
+            <div id="p1b-g5"></div>
+            <div id="p1b-g6"></div>
+            <div id="p1b-g7"></div>
+            <div id="p1b-g8"></div>
+            <div id="p1b-g9"></div>
+            <div id="p1b-g10"></div>
+    
+            <div id="p1b-h1" class="grid-coord">H</div>
+            <div id="p1b-h2"></div>
+            <div id="p1b-h3"></div>
+            <div id="p1b-h4"></div>
+            <div id="p1b-h5"></div>
+            <div id="p1b-h6"></div>
+            <div id="p1b-h7"></div>
+            <div id="p1b-h8"></div>
+            <div id="p1b-h9"></div>
+            <div id="p1b-h10"></div>
+    
+            <div id="p1b-i1" class="grid-coord">I</div>
+            <div id="p1b-i2"></div>
+            <div id="p1b-i3"></div>
+            <div id="p1b-i4"></div>
+            <div id="p1b-i5"></div>
+            <div id="p1b-i6"></div>
+            <div id="p1b-i7"></div>
+            <div id="p1b-i8"></div>
+            <div id="p1b-i9"></div>
+            <div id="p1b-i10"></div>
+    
+            <div id="p1b-j1" class="grid-coord">J</div>
+            <div id="p1b-j2"></div>
+            <div id="p1b-j3"></div>
+            <div id="p1b-j4"></div>
+            <div id="p1b-j5"></div>
+            <div id="p1b-j6"></div>
+            <div id="p1b-j7"></div>
+            <div id="p1b-j8"></div>
+            <div id="p1b-j9"></div>
+            <div id="p1b-j10"></div>
+        </section>
+        <section id="player1-guess-board" class="board p1boards">
+            <div id="p1g-a1" class="grid-coord">A1</div>
+            <div id="p1g-a2" class="grid-coord">2</div>
+            <div id="p1g-a3" class="grid-coord">3</div>
+            <div id="p1g-a4" class="grid-coord">4</div>
+            <div id="p1g-a5" class="grid-coord">5</div>
+            <div id="p1g-a6" class="grid-coord">6</div>
+            <div id="p1g-a7" class="grid-coord">7</div>
+            <div id="p1g-a8" class="grid-coord">8</div>
+            <div id="p1g-a9" class="grid-coord">9</div>
+            <div id="p1g-a10" class="grid-coord">10</div>
+    
+            <div id="p1g-b1" class="grid-coord">B</div>
+            <div id="p1g-b2"></div>
+            <div id="p1g-b3"></div>
+            <div id="p1g-b4"></div>
+            <div id="p1g-b5"></div>
+            <div id="p1g-b6"></div>
+            <div id="p1g-b7"></div>
+            <div id="p1g-b8"></div>
+            <div id="p1g-b9"></div>
+            <div id="p1g-b10"></div>
+            
+            <div id="p1g-c1" class="grid-coord">C</div>
+            <div id="p1g-c2"></div>
+            <div id="p1g-c3"></div>
+            <div id="p1g-c4"></div>
+            <div id="p1g-c5"></div>
+            <div id="p1g-c6"></div>
+            <div id="p1g-c7"></div>
+            <div id="p1g-c8"></div>
+            <div id="p1g-c9"></div>
+            <div id="p1g-c10"></div>
+    
+            <div id="p1g-d1" class="grid-coord">D</div>
+            <div id="p1g-d2"></div>
+            <div id="p1g-d3"></div>
+            <div id="p1g-d4"></div>
+            <div id="p1g-d5"></div>
+            <div id="p1g-d6"></div>
+            <div id="p1g-d7"></div>
+            <div id="p1g-d8"></div>
+            <div id="p1g-d9"></div>
+            <div id="p1g-d10"></div>
+    
+            <div id="p1g-e1" class="grid-coord">E</div>
+            <div id="p1g-e2"></div>
+            <div id="p1g-e3"></div>
+            <div id="p1g-e4"></div>
+            <div id="p1g-e5"></div>
+            <div id="p1g-e6"></div>
+            <div id="p1g-e7"></div>
+            <div id="p1g-e8"></div>
+            <div id="p1g-e9"></div>
+            <div id="p1g-e10"></div>
+    
+            <div id="p1g-f1" class="grid-coord">F</div>
+            <div id="p1g-f2"></div>
+            <div id="p1g-f3"></div>
+            <div id="p1g-f4"></div>
+            <div id="p1g-f5"></div>
+            <div id="p1g-f6"></div>
+            <div id="p1g-f7"></div>
+            <div id="p1g-f8"></div>
+            <div id="p1g-f9"></div>
+            <div id="p1g-f10"></div>
+    
+            <div id="p1g-g1" class="grid-coord">G</div>
+            <div id="p1g-g2"></div>
+            <div id="p1g-g3"></div>
+            <div id="p1g-g4"></div>
+            <div id="p1g-g5"></div>
+            <div id="p1g-g6"></div>
+            <div id="p1g-g7"></div>
+            <div id="p1g-g8"></div>
+            <div id="p1g-g9"></div>
+            <div id="p1g-g10"></div>
+    
+            <div id="p1g-h1" class="grid-coord">H</div>
+            <div id="p1g-h2"></div>
+            <div id="p1g-h3"></div>
+            <div id="p1g-h4"></div>
+            <div id="p1g-h5"></div>
+            <div id="p1g-h6"></div>
+            <div id="p1g-h7"></div>
+            <div id="p1g-h8"></div>
+            <div id="p1g-h9"></div>
+            <div id="p1g-h10"></div>
+    
+            <div id="p1g-i1" class="grid-coord">I</div>
+            <div id="p1g-i2"></div>
+            <div id="p1g-i3"></div>
+            <div id="p1g-i4"></div>
+            <div id="p1g-i5"></div>
+            <div id="p1g-i6"></div>
+            <div id="p1g-i7"></div>
+            <div id="p1g-i8"></div>
+            <div id="p1g-i9"></div>
+            <div id="p1g-i10"></div>
+    
+            <div id="p1g-j1" class="grid-coord">J</div>
+            <div id="p1g-j2"></div>
+            <div id="p1g-j3"></div>
+            <div id="p1g-j4"></div>
+            <div id="p1g-j5"></div>
+            <div id="p1g-j6"></div>
+            <div id="p1g-j7"></div>
+            <div id="p1g-j8"></div>
+            <div id="p1g-j9"></div>
+            <div id="p1g-j10"></div>
+        </section>
+        <section id="player2-guess-board" class="board p2boards">   
+            <div id="p2g-a1" class="grid-coord">A1</div>
+            <div id="p2g-a2" class="grid-coord">2</div>
+            <div id="p2g-a3" class="grid-coord">3</div>
+            <div id="p2g-a4" class="grid-coord">4</div>
+            <div id="p2g-a5" class="grid-coord">5</div>
+            <div id="p2g-a6" class="grid-coord">6</div>
+            <div id="p2g-a7" class="grid-coord">7</div>
+            <div id="p2g-a8" class="grid-coord">8</div>
+            <div id="p2g-a9" class="grid-coord">9</div>
+            <div id="p2g-a10" class="grid-coord">10</div>
+    
+            <div id="p2g-b1" class="grid-coord">B</div>
+            <div id="p2g-b2"></div>
+            <div id="p2g-b3"></div>
+            <div id="p2g-b4"></div>
+            <div id="p2g-b5"></div>
+            <div id="p2g-b6"></div>
+            <div id="p2g-b7"></div>
+            <div id="p2g-b8"></div>
+            <div id="p2g-b9"></div>
+            <div id="p2g-b10"></div>
+            
+            <div id="p2g-c1" class="grid-coord">C</div>
+            <div id="p2g-c2"></div>
+            <div id="p2g-c3"></div>
+            <div id="p2g-c4"></div>
+            <div id="p2g-c5"></div>
+            <div id="p2g-c6"></div>
+            <div id="p2g-c7"></div>
+            <div id="p2g-c8"></div>
+            <div id="p2g-c9"></div>
+            <div id="p2g-c10"></div>
+    
+            <div id="p2g-d1" class="grid-coord">D</div>
+            <div id="p2g-d2"></div>
+            <div id="p2g-d3"></div>
+            <div id="p2g-d4"></div>
+            <div id="p2g-d5"></div>
+            <div id="p2g-d6"></div>
+            <div id="p2g-d7"></div>
+            <div id="p2g-d8"></div>
+            <div id="p2g-d9"></div>
+            <div id="p2g-d10"></div>
+    
+            <div id="p2g-e1" class="grid-coord">E</div>
+            <div id="p2g-e2"></div>
+            <div id="p2g-e3"></div>
+            <div id="p2g-e4"></div>
+            <div id="p2g-e5"></div>
+            <div id="p2g-e6"></div>
+            <div id="p2g-e7"></div>
+            <div id="p2g-e8"></div>
+            <div id="p2g-e9"></div>
+            <div id="p2g-e10"></div>
+    
+            <div id="p2g-f1" class="grid-coord">F</div>
+            <div id="p2g-f2"></div>
+            <div id="p2g-f3"></div>
+            <div id="p2g-f4"></div>
+            <div id="p2g-f5"></div>
+            <div id="p2g-f6"></div>
+            <div id="p2g-f7"></div>
+            <div id="p2g-f8"></div>
+            <div id="p2g-f9"></div>
+            <div id="p2g-f10"></div>
+    
+            <div id="p2g-g1" class="grid-coord">G</div>
+            <div id="p2g-g2"></div>
+            <div id="p2g-g3"></div>
+            <div id="p2g-g4"></div>
+            <div id="p2g-g5"></div>
+            <div id="p2g-g6"></div>
+            <div id="p2g-g7"></div>
+            <div id="p2g-g8"></div>
+            <div id="p2g-g9"></div>
+            <div id="p2g-g10"></div>
+    
+            <div id="p2g-h1" class="grid-coord">H</div>
+            <div id="p2g-h2"></div>
+            <div id="p2g-h3"></div>
+            <div id="p2g-h4"></div>
+            <div id="p2g-h5"></div>
+            <div id="p2g-h6"></div>
+            <div id="p2g-h7"></div>
+            <div id="p2g-h8"></div>
+            <div id="p2g-h9"></div>
+            <div id="p2g-h10"></div>
+    
+            <div id="p2g-i1" class="grid-coord">I</div>
+            <div id="p2g-i2"></div>
+            <div id="p2g-i3"></div>
+            <div id="p2g-i4"></div>
+            <div id="p2g-i5"></div>
+            <div id="p2g-i6"></div>
+            <div id="p2g-i7"></div>
+            <div id="p2g-i8"></div>
+            <div id="p2g-i9"></div>
+            <div id="p2g-i10"></div>
+    
+            <div id="p2g-j1" class="grid-coord">J</div>
+            <div id="p2g-j2"></div>
+            <div id="p2g-j3"></div>
+            <div id="p2g-j4"></div>
+            <div id="p2g-j5"></div>
+            <div id="p2g-j6"></div>
+            <div id="p2g-j7"></div>
+            <div id="p2g-j8"></div>
+            <div id="p2g-j9"></div>
+            <div id="p2g-j10"></div>
+        </section>
+        <section id="player2-boat-board" class="board p2boards">  
+            <div id="p2b-a1" class="grid-coord">A1</div>
+            <div id="p2b-a2" class="grid-coord">2</div>
+            <div id="p2b-a3" class="grid-coord">3</div>
+            <div id="p2b-a4" class="grid-coord">4</div>
+            <div id="p2b-a5" class="grid-coord">5</div>
+            <div id="p2b-a6" class="grid-coord">6</div>
+            <div id="p2b-a7" class="grid-coord">7</div>
+            <div id="p2b-a8" class="grid-coord">8</div>
+            <div id="p2b-a9" class="grid-coord">9</div>
+            <div id="p2b-a10" class="grid-coord">10</div>
+    
+            <div id="p2b-b1" class="grid-coord">B</div>
+            <div id="p2b-b2"></div>
+            <div id="p2b-b3"></div>
+            <div id="p2b-b4"></div>
+            <div id="p2b-b5"></div>
+            <div id="p2b-b6"></div>
+            <div id="p2b-b7"></div>
+            <div id="p2b-b8"></div>
+            <div id="p2b-b9"></div>
+            <div id="p2b-b10"></div>
+            
+            <div id="p2b-c1" class="grid-coord">C</div>
+            <div id="p2b-c2"></div>
+            <div id="p2b-c3"></div>
+            <div id="p2b-c4"></div>
+            <div id="p2b-c5"></div>
+            <div id="p2b-c6"></div>
+            <div id="p2b-c7"></div>
+            <div id="p2b-c8"></div>
+            <div id="p2b-c9"></div>
+            <div id="p2b-c10"></div>
+    
+            <div id="p2b-d1" class="grid-coord">D</div>
+            <div id="p2b-d2"></div>
+            <div id="p2b-d3"></div>
+            <div id="p2b-d4"></div>
+            <div id="p2b-d5"></div>
+            <div id="p2b-d6"></div>
+            <div id="p2b-d7"></div>
+            <div id="p2b-d8"></div>
+            <div id="p2b-d9"></div>
+            <div id="p2b-d10"></div>
+    
+            <div id="p2b-e1" class="grid-coord">E</div>
+            <div id="p2b-e2"></div>
+            <div id="p2b-e3"></div>
+            <div id="p2b-e4"></div>
+            <div id="p2b-e5"></div>
+            <div id="p2b-e6"></div>
+            <div id="p2b-e7"></div>
+            <div id="p2b-e8"></div>
+            <div id="p2b-e9"></div>
+            <div id="p2b-e10"></div>
+    
+            <div id="p2b-f1" class="grid-coord">F</div>
+            <div id="p2b-f2"></div>
+            <div id="p2b-f3"></div>
+            <div id="p2b-f4"></div>
+            <div id="p2b-f5"></div>
+            <div id="p2b-f6"></div>
+            <div id="p2b-f7"></div>
+            <div id="p2b-f8"></div>
+            <div id="p2b-f9"></div>
+            <div id="p2b-f10"></div>
+    
+            <div id="p2b-g1" class="grid-coord">G</div>
+            <div id="p2b-g2"></div>
+            <div id="p2b-g3"></div>
+            <div id="p2b-g4"></div>
+            <div id="p2b-g5"></div>
+            <div id="p2b-g6"></div>
+            <div id="p2b-g7"></div>
+            <div id="p2b-g8"></div>
+            <div id="p2b-g9"></div>
+            <div id="p2b-g10"></div>
+    
+            <div id="p2b-h1" class="grid-coord">H</div>
+            <div id="p2b-h2"></div>
+            <div id="p2b-h3"></div>
+            <div id="p2b-h4"></div>
+            <div id="p2b-h5"></div>
+            <div id="p2b-h6"></div>
+            <div id="p2b-h7"></div>
+            <div id="p2b-h8"></div>
+            <div id="p2b-h9"></div>
+            <div id="p2b-h10"></div>
+    
+            <div id="p2b-i1" class="grid-coord">I</div>
+            <div id="p2b-i2"></div>
+            <div id="p2b-i3"></div>
+            <div id="p2b-i4"></div>
+            <div id="p2b-i5"></div>
+            <div id="p2b-i6"></div>
+            <div id="p2b-i7"></div>
+            <div id="p2b-i8"></div>
+            <div id="p2b-i9"></div>
+            <div id="p2b-i10"></div>
+    
+            <div id="p2b-j1" class="grid-coord">J</div>
+            <div id="p2b-j2"></div>
+            <div id="p2b-j3"></div>
+            <div id="p2b-j4"></div>
+            <div id="p2b-j5"></div>
+            <div id="p2b-j6"></div>
+            <div id="p2b-j7"></div>
+            <div id="p2b-j8"></div>
+            <div id="p2b-j9"></div>
+            <div id="p2b-j10"></div>
+        </section>
+    </section>
+    <div></div>
+    <div id="lower-hud">
+        <section id="in-game-btns">
+            <button id="computer-player-btn">Computer Player?</button>
+            <button id="change-theme">Change Theme</button>
+            <button id="new-game-btn">New Game</button>
+            <button id="show-hide-rules-btn">Show/Hide Rules</button>
+            <button id="set-time">Set Time to Switch Boards</button>
+            <input id="time-input" type="text" placeholder="Enter time in seconds (1-9)">
+        </section>
+        <button id="mute-btn">Mute Audio</button>
+        <button id="undo-btn">Undo Placement</button>
+    </div>    
+
+<%- include("./partials/footer") %>

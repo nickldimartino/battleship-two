@@ -1,8 +1,268 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* Color variables for the HTML element */
+:root {
+  --body-background: radial-gradient(khaki, crimson);
+  --rules-background: white;
+  --rules-border: black;
+  --rules-color: black;
+  --upper-hud-image: linear-gradient(slategrey, darkgrey);
+  --hud-border: black;
+  --header-color: black;
+  --header-font-shadow: white;
+  --game-log-border: black;
+  --game-log-background-color: beige;
+  --game-log-color: black;
+  --hit-count-background-color: black;
+  --hit-count-color: white;
+  --hit-count-border: white;
+  --board-label-color: black;
+  --board-image: url(//images.pond5.com/water-surface-background-animation-footage-058330083_iconl.jpeg);
+  --board-border: black;
+  --board-div-border: rgb(173, 216, 230);
+  --square-hover-class-background-color: green;
+  --grid-coord-color: white;
+  --lower-hud-image: linear-gradient(darkgrey, slategrey);
+  --buttons-border: white;
+  --buttons-color: white;
+  --buttons-background-color: black;
+  --time-input-placeholder-color: grey;
 }
 
-a {
-  color: #00B7FF;
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+}
+
+.login img {
+  height: 30px;
+}
+
+
+/* Allows box sizing for the entire HTML page */
+* {
+  box-sizing: border-box;
+  font-family: "Anta", sans-serif;
+}
+
+/* Main body of the page */
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--body-background);
+}
+
+/* Boxes in the top right and left of the window displaying rules/instructions */
+#rules, 
+#boat-placement-instructions {
+  min-width: 300px;
+  max-width: 300px;
+  min-height: 130px;
+  max-height: 170px;
+  background-color: var(--rules-background);
+  border: 2px solid var(--rules-border);
+  position: absolute;
+  top: 0.2em;
+  font-size: 10px;
+  padding: 2px;
+  color: var(--rules-color);
+  z-index: 99 !important;
+}
+
+/* The game rules should be in the top right */
+#rules {
+  right: 0.2em;
+}
+
+/* The boat placement instructions should be in the top left */
+#boat-placement-instructions {
+  left: 0.2em;
+}
+
+/* HUD on top of the page holding the header, game log, and player hit counts */
+#upper-hud {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--upper-hud-image);
+  width: 100vw;
+  top: 0;
+  position: absolute;
+  padding: 10px;
+  border: 2px solid var(--hud-border);
+}
+
+/* The title "Battleship" */
+header {
+  font-size: 7vmin;
+  color: var(--header-color);
+  letter-spacing: 2vmin;
+  margin-left: 1px;
+  text-shadow: -1px 1px 0 var(--header-font-shadow),
+               1px 1px 0 var(--header-font-shadow),
+               1px -1px 0 var(--header-font-shadow),
+               -1px -1px 0 var(--header-font-shadow);
+}
+
+/* Box under the header displaying in-game moments and info */
+#game-log {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 2px solid var(--game-log-border);
+  background-color: var(--game-log-background-color);
+  min-height: 70px;
+  max-height: 70px;
+  min-width: 300px;
+  max-width: 300px;
+  color: var(--game-log-color);
+  margin-right: 70px;
+  margin-left: 70px;
+}
+
+/* Words in the game info box should be centered in it */
+#game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+/* Hit count for each player to show who is winning */
+.hit-count {
+  font-size: 30px;
+  background-color: var(--hit-count-background-color);
+  color: var(--hit-count-color);
+  width: 90px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  border: 1.5px groove var(--hit-count-border);
+}
+
+/* Labels displayig the urpose of each board */
+#board-labels {
+  display: flex;
+  flex-direction: row;
+  margin-top: 45px;
+  margin-bottom: -40px;
+}
+
+/* Individual labels for each board */
+.board-label {
+  margin-left: 64px;
+  margin-right: 64px;
+  color: var(--board-label-color);
+}
+
+/* Game boards display */
+#boards {
+  display: flex;
+  gap: 1vmin;
+}
+
+/* Creating a grid of squares in each board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 4.5vmin);
+  grid-template-rows: repeat(10, 4.5vmin);
+  background-image: var(--board-image);
+  border: 4px solid var(--board-border);
+}
+
+/* Modifying each grid square in each board */
+.board > div {
+  border: 1px solid var(--board-div-border);
+  background-color: transparent;
+}
+
+/* Giving each grid square a hover property */
+.board > div:hover {
+  transform: scale(1.1);
+  transition: transform 105ms case-in;
+  opacity: 0.60;
+  cursor: pointer;
+}
+
+/* A class given to each grid square when the new game button is clicked */
+.squareHoverClass:hover {
+  background-color: var(--square-hover-class-background-color) !important; 
+  transform: scale(1.1);
+  transition: transform 105ms case-in;
+  cursor: pointer;
+}
+
+/* Coordinate labels for the top row and left-most column grid squares */
+.grid-coord {
+  color: var(--grid-coord-color);
+  font-size: 10px;
+}
+
+/* The lower HUD on the bottom of the screen */
+#lower-hud {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--lower-hud-image);
+  height: 80px;
+  width: 100vw;
+  bottom: 0;
+  position: absolute;
+  border: 2px solid var(--hud-border);
+}
+
+/* Buttons in the bottom HUD */
+#in-game-btns {
+  display: flex;
+}
+
+/* Give each button in the bottom HUD similar styles */
+#show-hide-rules-btn, 
+#undo-btn, 
+#new-game-btn,
+#set-time, 
+#time-input, 
+#change-theme,
+#mute-btn,
+#computer-player-btn {
+  border: 1px solid var(--buttons-border);
+  border-radius: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: var(--buttons-color);
+  background-color: var(--buttons-background-color);
+  height: 25px;
+  font-size: 15px;
+}
+
+/* Give each button in the bottom HUD similar hover styles */
+#show-hide-rules-btn:hover, 
+#new-game-btn:hover, 
+#undo-btn:hover,
+#change-theme:hover,
+#mute-btn:hover,
+#computer-player-btn:hover {
+  transform: scale(1.1);
+  transition: transform 105ms case-in;
+  cursor: pointer;
+}
+
+/* The button to set the time is bigger so it's hover scale should be smaller */
+#set-time:hover {
+  transform: scale(1.05);
+  transition: transform 105ms case-in;
+  cursor: pointer;
+}
+
+/* The color of the placeholder words in the input field */
+#time-input::placeholder {
+  color: var(--time-input-placeholder-color);
 }

@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+<%- include("./partials/header") %>
+<body>
+  <nav>
+      <a href="/">Home</a> | 
+      <a href="/game">Play Game</a>
+      <a href="/logout">LOG OUT</a>
+      <% if (user) { %>
+      <% } else { %>
+        <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+      <% } %>
+  </nav>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-  </body>
-</html>
+
+<%- include("./partials/footer") %>
