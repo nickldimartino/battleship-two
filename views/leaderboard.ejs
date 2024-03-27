@@ -1,5 +1,38 @@
 <%- include("./partials/header") %>
 <%- include("./partials/main-nav") %>
 
+<!-- display the signed-in users favorited AI Platforms -->
+<section id="leaderboard-page">
+    <h1 id="leaderboard-title"><strong><%= title %></strong></h1>
+    <div id="leaderboard-head">
+        <div id="leaderboard-head-row">
+            <div></div>
+            <div>
+                <strong>Name</strong>
+            </div>
+            <div>
+                <strong>Score</strong>
+            </div>
+            <div>
+                <strong>Wins</strong>
+            </div>
+            <div>
+                <strong>Losses</strong>
+            </div>
+        </div>
+    </div>
+    <% let i = 1 %>
+    <% users.forEach(u => { %>
+    <div id="leaderboard-each-user">
+        <div><%= i %></div>
+        <div><%= u.name %></div>
+        <div><%= u.score %></div>
+        <div><%= u.wins %></div>
+        <div><%= u.losses %></div>
+        <% i++; %>
+    </div>
+    <% }); %>
+</section>
+
 
 <%- include("./partials/footer") %>
