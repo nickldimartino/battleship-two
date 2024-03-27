@@ -25,8 +25,12 @@
     -Patrol Boat: 2 squares<br>
 </div>
 <body>
-    <section id="upper-hud">   
-        <header>BATTLESHIP</header>
+    <section id="upper-hud">
+        <div id="game-header">
+            <a href="/" id="game-home-link">Home</a>
+            <header>BATTLESHIP</header>
+            <a href="/" id="leaderboards-link">Leaderboards</a>
+        </div>
         <div id="game-info">
             <div id="p1-hit-count" class="hit-count"></div>
             <div id="game-log"></div>
@@ -499,5 +503,5 @@
         <button id="mute-btn">Mute Audio</button>
         <button id="undo-btn">Undo Placement</button>
     </div>    
-
-<%- include("./partials/footer") %>
+</body>
+</html>

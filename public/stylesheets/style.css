@@ -27,17 +27,79 @@
   --time-input-placeholder-color: grey;
 }
 
+/* Main Page Nav Bar */
+#main-nav {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  background: var(--upper-hud-image);
+  top: 0;
+  height: 10vmin;
+  padding-top: 1.5vmin;
+  position: absolute;
+  font-size: 5vmin;
+}
+
+/* Main Page Title */
+#main-page-title { font-size: 20vmin; }
+
+/* Main Page Nav Bar Links */
+a {
+  color: black;
+  margin-left: 16vmin;
+  min-height: 6vmin;
+  max-height: 6vmin;
+  text-decoration: none;
+}
+
+/* Login Link */
 .login {
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 34px;
 }
 
+/* Login Link Image */
 .login img {
   height: 30px;
 }
 
+/* ---------------------------- Footer ---------------------------- */
+#footer {
+  background: var(--upper-hud-image);
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 2fr;
+  padding-top: 10px;
+  padding-bottom: 7px;
+  text-align: center;
+}
+
+#name { 
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20px;
+  font-size: 3vmin;
+}
+
+.fa-linkedin-square,
+.fa-github,
+.fa-envelope {
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+}
+
+#course {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  font-size: 3vmin;
+  align-items: center;
+}
 
 /* Allows box sizing for the entire HTML page */
 * {
@@ -102,11 +164,39 @@ header {
   font-size: 7vmin;
   color: var(--header-color);
   letter-spacing: 2vmin;
-  margin-left: 1px;
   text-shadow: -1px 1px 0 var(--header-font-shadow),
                1px 1px 0 var(--header-font-shadow),
                1px -1px 0 var(--header-font-shadow),
                -1px -1px 0 var(--header-font-shadow);
+  text-align: center;
+}
+
+/* Home Page and Leaderboard links next to header */
+#game-home-link,
+#leaderboards-link {
+  border: 1px solid var(--buttons-border);
+  border-radius: 4px;
+  padding: 4px;
+  color: var(--buttons-color);
+  background-color: var(--buttons-background-color);
+}
+
+/* Home Page link next to header */
+#game-home-link {
+  margin-right: 74px;
+  margin-left: 39px;
+}
+
+/* Header and Links on top of screen */
+#game-header {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Leaderboards link next to header */
+#leaderboards-link {
+  margin-left: 30px;
+  margin-right: 10px;
 }
 
 /* Box under the header displaying in-game moments and info */

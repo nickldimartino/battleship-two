@@ -5,11 +5,11 @@ var ensureLoggedIn = require('../config/ensureLoggedIn');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Battleship' });
+  res.render('index', { title: 'Battleship 2' });
 });
 
 router.get('/game', ensureLoggedIn, function(req, res, next) {
-  res.render('game', { title: 'Battleship' });
+  res.render('game', { title: 'Battleship 2' });
 });
 
 // Google OAuth login route
