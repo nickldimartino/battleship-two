@@ -1,0 +1,10 @@
+<nav id="main-nav">
+    <a href="/">Home</a>
+    <a href="/game">Play Game</a>
+    <a href="/leaderboard">Leaderboards</a>
+    <% if (user) { %>
+      <a href="/logout">Log Out</a>
+    <% } else { %>
+      <a href="/auth/google" class="login">Log In&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+    <% } %>
+</nav>

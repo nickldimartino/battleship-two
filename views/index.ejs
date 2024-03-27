@@ -1,15 +1,7 @@
 <%- include("./partials/header") %>
+
 <body>
-  <nav id="main-nav">
-    <a href="/">Home</a>
-    <a href="/game">Play Game</a>
-    <a href="/">Leaderboards</a>
-    <% if (user) { %>
-      <a href="/logout">Log Out</a>
-    <% } else { %>
-      <a href="/auth/google" class="login">Log In&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
-    <% } %>
-  </nav>
+  <%- include("./partials/main-nav") %>
     <h1 id="main-page-title"><%= title %></h1>
 
 <%- include("./partials/footer") %>

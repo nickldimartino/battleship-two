@@ -12,6 +12,7 @@ require('../config/database');
 require('../config/passport');
 
 var indexRouter = require('../routes/index');
+var leaderboardRouter = require('../routes/leaderboard');
 
 var app = express();
 
@@ -41,6 +42,7 @@ app.use(function (req: any, res: any, next: any) {
 });
 
 app.use('/', indexRouter);
+app.use('/leaderboard', leaderboardRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req: any, res: any, next: any) {
