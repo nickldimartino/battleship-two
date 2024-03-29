@@ -1,3 +1,9 @@
+/*----- user data -----*/
+let userScore = document.currentScript.getAttribute("userScore");
+let userWins = document.currentScript.getAttribute("userWins");
+let userLosses = document.currentScript.getAttribute("userLosses");
+
+
 /*----- constants -----*/
 // Size of each boat
 const BOAT_SIZES = {
@@ -441,7 +447,7 @@ function getBoardSquare(boardId, col, row) {
 }
 
 // Check the squares clicked by the player
-function checkSquare(boardId, board, col, row) {
+async function checkSquare(boardId, board, col, row) {
     let oppBoard;                     // opponent's board
     lastPlacedBoatSquareCol = col;    // last placed boat square column
     lastPlacedBoatSquareRow = row;    // last placed boat square row
@@ -495,6 +501,10 @@ function checkSquare(boardId, board, col, row) {
     } else if (square === SQUARE_VALUE.EMPTY && oppSquare === SQUARE_VALUE.BOAT) {
         board[col][row] = SQUARE_VALUE.HIT;
 
+        if (turn == 1) {
+            userScore += 10;
+        }
+        
         if (oppBoard === player1BoatBoard) {
             lastComputerHit = lastComputerGuess;
             narrowComputerSearchArea = true;
@@ -695,6 +705,13 @@ function getWinner(turn) {
     if (directHits[turn] === TOTAL_HITS_TO_WIN) {
         winner = turn;
         if (playAudio) playSound(AUDIO.VICTORY);
+
+        // update user wins or losses for the signed in user
+        if (winner === 1) {
+            userWins += 1;
+        } else {
+            userLosses += 1;
+        }
     }
     return;
 }

@@ -2,14 +2,23 @@ var express = require('express');
 var router = express.Router();
 const passport = require('passport');
 var ensureLoggedIn = require('../config/ensureLoggedIn');
+const User = require("../models/user");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Battleship 2' });
 });
 
-router.get('/game', ensureLoggedIn, function(req, res, next) {
-  res.render('game', { title: 'Battleship 2' });
+router.get('/game', ensureLoggedIn, async function(req, res, next) {
+  const user = await User.findById(req.user._id);
+  user.gamesPlayed++;
+  // await user.save()
+  
+  res.render('game', { 
+    title: 'Battleship 2',
+    user,
+    errorMsg: ""
+  });
 });
 
 // Google OAuth login route
