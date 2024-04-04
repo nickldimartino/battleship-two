@@ -15,7 +15,7 @@
   --hit-count-color: white;
   --hit-count-border: white;
   --board-label-color: black;
-  --board-image: url(//images.pond5.com/water-surface-background-animation-footage-058330083_iconl.jpeg);
+  --board-image: url("../imgs/water.webp");
   --board-border: black;
   --board-div-border: rgb(173, 216, 230);
   --square-hover-class-background-color: green;
