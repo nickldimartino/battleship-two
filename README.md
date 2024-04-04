@@ -23,7 +23,8 @@ This is a bonus project that is a redesign of my first project for General Assem
 
 # Getting Started
 
-Link to the app hosted on Heroku:
+Link to the app hosted on Heroku:  
+NOTE: Opening this app may bring a webpage up display "safety risk." You can bypass this in the details section and "open anyway."
 https://battleship-two-404cb7137cf0.herokuapp.com/
 
 # Next Steps
