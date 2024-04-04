@@ -1,19 +1,25 @@
-var express = require('express');
-var router = express.Router();
+/*---------- Modules ----------*/
+const express = require('express');
+const router = express.Router();
 const passport = require('passport');
-var ensureLoggedIn = require('../config/ensureLoggedIn');
+const ensureLoggedIn = require('../../config/ensureLoggedIn');
+
+// User model
 const User = require("../models/user");
 
-/* GET home page. */
+
+/*---------- Routes ----------*/
+// GET route to home page
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Battleship 2' });
 });
 
+// GET route to the game page
 router.get('/game', ensureLoggedIn, async function(req, res, next) {
+  // get the current user
   const user = await User.findById(req.user._id);
-  user.gamesPlayed++;
-  // await user.save()
   
+  // render the game with the user
   res.render('game', { 
     title: 'Battleship 2',
     user,
@@ -21,7 +27,7 @@ router.get('/game', ensureLoggedIn, async function(req, res, next) {
   });
 });
 
-// Google OAuth login route
+// GET route to Google OAuth login
 router.get('/auth/google', passport.authenticate(
   // Which passport strategy is being used?
   'google',
@@ -33,7 +39,7 @@ router.get('/auth/google', passport.authenticate(
   }
 ));
 
-// Google OAuth callback route
+// GET route Google OAuth callback
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
@@ -42,11 +48,13 @@ router.get('/oauth2callback', passport.authenticate(
   }
 ));
 
-// OAuth logout route
+// GET route to OAuth logout
 router.get('/logout', function(req, res){
   req.logout(function() {
     res.redirect('/');
   });
 });
 
+
+/*---------- Router Export ----------*/
 module.exports = router;

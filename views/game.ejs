@@ -1,5 +1,6 @@
 <%- include("./partials/header") %>
-<script defer src="/javascripts/main.js" userScore="<%= user.score %>" userWins="<%= user.wins %>" userLosses="<%= user.losses %>"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script id="script" defer src="http://localhost:3000/javascripts/main.js" user="<%= JSON.stringify(user) %>" type="module"></script>
 <div id="rules">
     <strong>GAME RULES:</strong><BR>
     <strong>GOAL: </strong>Be the first to sink all five of your opponent's ships.<br>

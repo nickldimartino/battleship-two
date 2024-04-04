@@ -1,5 +1,8 @@
+/*---------- Modules ----------*/
 const mongoose = require('mongoose');
 
+
+/*---------- DB Connection ----------*/
 mongoose.connect(process.env.DATABASE_URL);
 	
 // shortcut to mongoose.connection object

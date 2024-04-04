@@ -1,7 +1,7 @@
 /*----- user data -----*/
-let userScore = document.currentScript.getAttribute("userScore");
-let userWins = document.currentScript.getAttribute("userWins");
-let userLosses = document.currentScript.getAttribute("userLosses");
+let tag = document.getElementById("script");
+let user = tag.getAttribute("user")
+let userData = JSON.parse(user);
 
 
 /*----- constants -----*/
@@ -93,6 +93,7 @@ let lastPlacedBoardId;                  // holds the last clicked board id
 let timeIntervalBoardSwitch             // holds the time interval for the switching boards when alternating turns
 let themeValue;                         // value for the game color theme (1 or 2)
 let playAudio;                          // holds sound playing boolean 
+let gameRulesShowing;                   // boolean to decide if the game rules are visibile to the user
 let directHits = {                      // number of hits each player has taken
     "1": 0, 
     "-1": 0 
@@ -501,8 +502,9 @@ async function checkSquare(boardId, board, col, row) {
     } else if (square === SQUARE_VALUE.EMPTY && oppSquare === SQUARE_VALUE.BOAT) {
         board[col][row] = SQUARE_VALUE.HIT;
 
+        // update the users score by 10 points for a hit
         if (turn == 1) {
-            userScore += 10;
+            userData.score += 10;
         }
         
         if (oppBoard === player1BoatBoard) {
@@ -706,12 +708,27 @@ function getWinner(turn) {
         winner = turn;
         if (playAudio) playSound(AUDIO.VICTORY);
 
-        // update user wins or losses for the signed in user
+        // update user wins, losses, and games played for the signed in user
         if (winner === 1) {
-            userWins += 1;
+            userData.wins += 1;
         } else {
-            userLosses += 1;
+            userData.losses += 1;
         }
+        userData.gamesPlayed += 1;
+
+        // axios call to update the user data in MongoDB
+        axios.post("http://localhost:3000/leaderboard/update", {
+            score: userData.score,
+            wins: userData.wins,
+            losses: userData.losses,
+            gamesPlayed: userData.gamesPlayed
+        })
+        .then(res => {
+            console.log(res.data);
+        })
+        .catch(err => {
+            console.log("Error", err);
+        });
     }
     return;
 }

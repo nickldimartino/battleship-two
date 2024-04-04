@@ -1,6 +1,9 @@
+/*---------- Modules ----------*/
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
+/*---------- Schemas ----------*/
 const userSchema = new Schema({
     name: String,
     googleId: {
@@ -30,4 +33,5 @@ const userSchema = new Schema({
   });
   
 
+/*---------- Schema Exports ----------*/
 module.exports = mongoose.model('User', userSchema);
