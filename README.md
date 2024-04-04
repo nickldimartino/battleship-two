@@ -24,7 +24,7 @@ This is a bonus project that is a redesign of my first project for General Assem
 # Getting Started
 
 Link to the app hosted on Heroku:
-https://ai-platforms-list-crud-64ab4f9bb249.herokuapp.com/platforms
+https://battleship-two-404cb7137cf0.herokuapp.com/
 
 # Next Steps
 
