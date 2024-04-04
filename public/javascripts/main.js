@@ -63,8 +63,8 @@ const DIRECTION = {
 const NUM_COLUMN_MAX = 10;              // max number of columns
 const NUM_ROW_MAX = 10;                 // max number of rows
 const MS_PER_SECOND = 1000;             // number of milliseconds in a second
-const TOTAL_HITS_TO_WIN = 2;           // sum of the amount of hits needed for all boats
-const TOTAL_NUM_BOATS = 2;              // total number of boats a player needs  
+const TOTAL_HITS_TO_WIN = 17;           // sum of the amount of hits needed for all boats
+const TOTAL_NUM_BOATS = 5;              // total number of boats a player needs  
 const INIT_BOARD_TIME = 2000;           // initial time to switch board (ms)
 
 
