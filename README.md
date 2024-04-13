@@ -1,6 +1,15 @@
 # <h1 align="center">Battleship 2</h1>
 #### <h3 align="center"><a href="https://battleship-two-404cb7137cf0.herokuapp.com/">Play on Heroku!</a></h3>
 
+<div align="center">
+ <a href="https://www.linkedin.com/in/nicholas-dimartino/" target="_blank">
+      <img src="https://img.shields.io/badge/-linkedin.com/in/ndimartino-blue?style=flat&logo=Linkedin&logoColor=white">
+ </a> 
+ <a href="mailto:nick.l.dimartino@gmail.com" target="_blank">
+    <img src="https://img.shields.io/badge/-nick.l.dimartino@gmail.com-c14438?style=flat&logo=Gmail&logoColor=white">
+ </a>
+</div>
+
 ## 📝Description
 This is a bonus project that is a redesign of my first project for General Assembly.  It takes my first game of Battleship and converts it into a an Express app using a TypeScript server.  Users can now sign in and play the game of Battleship.  The game will increment a score, wins, losses, and games played for each user.  There is now a Leaderbord page to display all users' scores.  The user with the highest score will be at the top.  For more information regarding the first project, see this <a href="https://github.com/nickldimartino/Battleship-Game">GitHub repo</a>.
 
