@@ -74,11 +74,13 @@ This is a bonus project that is a redesign of my first project for General Assem
 
 <details>
 <summary>Deployed Link (Heroku)</summary>
+
 <a href="https://battleship-two-404cb7137cf0.herokuapp.com/">https://battleship-two-404cb7137cf0.herokuapp.com/</a>
 <p>Note: A security risk screen may appear.  This can be bypassed using the "details" button and "continue to site anyway" link.</p>
 </details>
 <details>
 <summary>Original GitHub Code from Battleship 1</summary>
+
 <a href="https://github.com/nickldimartino/Battleship-Game">https://github.com/nickldimartino/Battleship-Game</a>
 </details>
 
