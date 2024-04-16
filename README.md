@@ -3,14 +3,14 @@
 
 <div align="center">
  <a href="https://www.linkedin.com/in/nicholas-dimartino/" target="_blank">
-      <img src="https://img.shields.io/badge/-linkedin.com/in/ndimartino-blue?style=flat&logo=Linkedin&logoColor=white">
+      <img src="https://img.shields.io/badge/-linkedin.com/in/nicholasdimartino-blue?style=flat&logo=Linkedin&logoColor=white">
  </a> 
  <a href="mailto:nick.l.dimartino@gmail.com" target="_blank">
     <img src="https://img.shields.io/badge/-nick.l.dimartino@gmail.com-c14438?style=flat&logo=Gmail&logoColor=white">
  </a>
 </div>
 
-## 📝Description
+## 📝 Description
 This is a bonus project that is a redesign of my first project for General Assembly.  It takes my first game of Battleship and converts it into a an Express app using a TypeScript server.  Users can now sign in and play the game of Battleship.  The game will increment a score, wins, losses, and games played for each user.  There is now a Leaderbord page to display all users' scores.  The user with the highest score will be at the top.  For more information regarding the first project, see this <a href="https://github.com/nickldimartino/Battleship-Game">GitHub repo</a>.
 
 ## 🖼️ Screenshots
@@ -51,6 +51,7 @@ This is a bonus project that is a redesign of my first project for General Assem
 ### 📲 Instructions
 <details>
 <summary>How to Play the Game</summary>
+ 
 1. Navigate to the nav bar on the top of the screen and click "Play Game".
  
 2. Game is set for two players. Click the "Computer Player" button if you wish to play against to the computer.
@@ -63,6 +64,7 @@ This is a bonus project that is a redesign of my first project for General Assem
 </details>
 <details>
 <summary>Viewing the Leaderboards</summary>
+
 1. Navigate to the nav bar on the top of the screen and click "Leaderboards".
  
 2. A list of the players that have played the game will be displayed here.  The score is based on the number of hits and wins a player has.
@@ -80,7 +82,7 @@ This is a bonus project that is a redesign of my first project for General Assem
 <a href="https://github.com/nickldimartino/Battleship-Game">https://github.com/nickldimartino/Battleship-Game</a>
 </details>
 
-# Next Steps
+## ⏭️ Next Steps
  
 - [ ] Find and fix possible bugs
 - [ ] Refactor code
